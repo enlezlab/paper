@@ -18,7 +18,6 @@ class PiqApp extends piq {
       }
 
       ${this.name()} {
-        font-family: times;
         display: block;
         width: 100vw;
         height: 100vh;

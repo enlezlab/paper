@@ -14,7 +14,7 @@ class TypeWriter extends piq {
         box-sizing: border-box;
         max-width: 768px;
         margin: 0 auto;
-        padding: 4rem;
+        padding: 2rem;
       }
 
       ${this.name()} .paper {
@@ -83,7 +83,9 @@ class TypeWriter extends piq {
 
   template() {
     return `
-      <div class="paper" contenteditable="true">
+      <div class="paper"
+        contenteditable="true"
+        spellcheck="false">
       </div>
     `;
   };
