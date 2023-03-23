@@ -8,6 +8,11 @@ const isMod = (n) => {
   };
 };
 
+const isTab = (n) => {
+  return n === 9;
+};
+
+
 const Press = (conf) => {
   const q = conf.query;
   const c = conf.callback;
@@ -28,9 +33,16 @@ const Press = (conf) => {
     const code = event.keyCode;
     const k = event.key;
 
+    console.log(code);
+
     if (isMod(code)) {
       event.preventDefault();
       mod = true;
+    }
+
+    if (isTab(code)) {
+      event.preventDefault();
+      console.log('insert TAB');
     }
 
     //TODO: need to make a keycode map
