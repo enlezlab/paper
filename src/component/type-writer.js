@@ -1,4 +1,5 @@
 import piq from '/lib/piq/dist/piq.dist.js';
+import key from '/lib/util/key.js';
 
 class TypeWriter extends piq {
   name() {
@@ -20,7 +21,7 @@ class TypeWriter extends piq {
       ${this.name()} .paper {
         width: 100%;
         height: 100%;
-        font-size: 2rem;
+        font-size: 1.2rem;
         caret-color: orange;
         box-sizing: border-box;
         word-wrap: break-word;
@@ -39,6 +40,7 @@ class TypeWriter extends piq {
   };
 
   save() {
+    console.log(this.innerText);
     console.log('document saved!');
   };
 
@@ -76,6 +78,13 @@ class TypeWriter extends piq {
       },
       focusOutCallback: () => {
         console.log('save document and clear auto save interval');
+      }
+    });
+
+    key.Press({
+      query: 's',
+      callback: () => {
+        console.log('callback invoked');
       }
     });
 
