@@ -1,2 +1,3 @@
+- [ ] data schema
 - [ ] keyboard control/binding
 - [ ] menu page (load document, create new)

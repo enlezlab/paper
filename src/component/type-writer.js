@@ -1,5 +1,7 @@
 import piq from '/lib/piq/dist/piq.dist.js';
 import key from '/lib/util/key.js';
+import io from '/lib/util/io.js';
+import interval from '/lib/util/interval.js';
 
 class TypeWriter extends piq {
   name() {
@@ -39,43 +41,26 @@ class TypeWriter extends piq {
     `;
   };
 
-  //TODO: save should go to its own module
-  save() {
-    console.log(this.innerText);
-    console.log('document saved!');
+  async save() {
+    const s = io.Save('document', {
+      uuid: '123',
+      slug: 'qwerty-asdfgh',
+      date: '2023-03-24',
+      categoryID: '00',
+      authorID: '00',
+      tags: 'writing, publishing, open web',
+      title: 'untitled',
+      content: this.innerText,
+    });
+
+    console.log(await s);
   };
 
-  //TODO: file save interval should go to its own module
-  //should also rename it for `focusInterval`
-  autoSaveInterval(conf) {
-    const n = conf.node;
-    const th = conf.threshold;
-    const focusIn = conf.focusInCallback;
-    const focusOut = conf.focusOutCallback;
-
-    let interval;
-
-    n.addEventListener('focusin', function () {
-      // initiate debounce interval for autosave
-      interval = setInterval(() => {
-        focusIn();
-      }, th)
-    }, false);
-
-    n.addEventListener('focusout', function () {
-      // save document and clear autosave interval
-      clearInterval(interval)
-      focusOut();
-
-    }, false);
-  };
-
-  connected() {
+  async connected() {
     const paper = this.querySelectorAll('.paper')[0];
-
     const _this = this;
 
-    this.autoSaveInterval({
+    interval.Focus({
       node: paper,
       threshold: 10000,
       focusInCallback: () => {

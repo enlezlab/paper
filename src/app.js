@@ -1,5 +1,4 @@
 import piq from '/lib/piq/dist/piq.dist.js';
-import NavControl from '/component/nav-control.js';
 import RouterView from '/component/router-view.js';
 
 
