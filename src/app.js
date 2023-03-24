@@ -1,5 +1,8 @@
 import piq from '/lib/piq/dist/piq.dist.js';
 import RouterView from '/component/router-view.js';
+import PanelStandard from '/component/panel-standard.js';
+import PanelWidget from '/component/panel-widget.js';
+import PanelStatus from '/component/panel-status.js';
 
 
 class PiqApp extends piq {
@@ -22,17 +25,42 @@ class PiqApp extends piq {
         height: 100vh;
         box-sizing: border-box;
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
+        grid-gap: 5px;
+        grid-template-columns: 300px auto 300px;
+        grid-template-rows: 1fr auto;
         position: fixed;
         width: 100%;
         height: 100%;
+        padding: 5px;
+      }
+
+      ${this.name()} panel-standard {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+      }
+
+      ${this.name()} panel-widget {
+        grid-column: 3 / 4;
+        grid-row: 1 / 3;
+      }
+
+      ${this.name()} panel-status {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      ${this.name()} router-view {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
       }
     `;
   };
 
   template() {
     return `
+      <panel-standard></panel-standard>
+      <panel-widget></panel-widget>
+      <panel-status></panel-status>
       <router-view></router-view>
     `;
   };

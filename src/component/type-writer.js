@@ -15,9 +15,8 @@ class TypeWriter extends piq {
         height: 100%;
         display: block;
         box-sizing: border-box;
-        max-width: 768px;
-        margin: 0 auto;
-        padding: 2rem;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
 
       ${this.name()} .paper {
@@ -27,12 +26,9 @@ class TypeWriter extends piq {
         caret-color: orange;
         box-sizing: border-box;
         word-wrap: break-word;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      ${this.name()} .paper ::selection {
-        background: orange;
+        max-width: 768px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
       }
 
       ${this.name()} .paper:focus {
