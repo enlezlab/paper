@@ -1,3 +1,7 @@
-- [ ] data schema
+- [ ] type-writer: method to output word count for status label
+- [ ] type-writer: method to output read time estimate for status label
+- [ ] new docuemnt (slug + view)
+- [wip] data schema
+- [x] basic panels
 - [ ] keyboard control/binding
 - [ ] menu page (load document, create new)
