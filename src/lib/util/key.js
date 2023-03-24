@@ -50,7 +50,7 @@ const Press = (conf) => {
       event.preventDefault();
       console.log('combo key');
       c();
-      return;
+      mod = false;
     }
 
   }, false);

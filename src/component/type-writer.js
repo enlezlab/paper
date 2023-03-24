@@ -39,11 +39,14 @@ class TypeWriter extends piq {
     `;
   };
 
+  //TODO: save should go to its own module
   save() {
     console.log(this.innerText);
     console.log('document saved!');
   };
 
+  //TODO: file save interval should go to its own module
+  //should also rename it for `focusInterval`
   autoSaveInterval(conf) {
     const n = conf.node;
     const th = conf.threshold;
@@ -70,21 +73,27 @@ class TypeWriter extends piq {
   connected() {
     const paper = this.querySelectorAll('.paper')[0];
 
+    const _this = this;
+
     this.autoSaveInterval({
       node: paper,
       threshold: 10000,
       focusInCallback: () => {
         console.log('run auto save interval');
+        _this.save();
       },
       focusOutCallback: () => {
         console.log('save document and clear auto save interval');
+        _this.save();
       }
     });
 
+    //ctrl+s
+    //TODO: need to refine key.js (take literal key name and as token to get the corresponding ket code)
     key.Press({
-      query: 's',
+      query: 83,
       callback: () => {
-        console.log('callback invoked');
+        _this.save();
       }
     });
 
