@@ -1,4 +1,3 @@
-
 import piq from '/lib/piq/dist/piq.dist.js';
 
 class LabelStatus extends piq {
@@ -17,6 +16,7 @@ class LabelStatus extends piq {
         margin-right: 2.5px;
         margin-left: 2.5px;
         border-radius: 2px;
+        text-transform: uppercase;
       }
     `;
   };

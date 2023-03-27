@@ -40,10 +40,11 @@ const Press = (conf) => {
       mod = true;
     }
 
-    if (isTab(code)) {
-      event.preventDefault();
-      console.log('insert TAB');
-    }
+    //TODO: it breaks back tab key navigation without checking `shift` key status
+    // if (isTab(code)) {
+    //   event.preventDefault();
+    //   console.log('insert TAB');
+    // }
 
     //TODO: need to make a keycode map
     if (mod && code === 83) {

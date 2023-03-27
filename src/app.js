@@ -26,7 +26,7 @@ class PiqApp extends piq {
         box-sizing: border-box;
         display: grid;
         grid-gap: 5px;
-        grid-template-columns: 300px auto 300px;
+        grid-template-columns: minmax(200px, 300px) auto 300px;
         grid-template-rows: 1fr auto;
         position: fixed;
         width: 100%;

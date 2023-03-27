@@ -1,5 +1,5 @@
 import piq from '/lib/piq/dist/piq.dist.js';
-import LabelStatus from '/component/label-status.js';
+import LabelStatus from '/component/partial/label-status.js';
 
 class PanelStatus extends piq {
   name() {
@@ -15,12 +15,7 @@ class PanelStatus extends piq {
         background: #111;
         border-radius: 5px;
         padding: 5px 2.5px;
-        opacity: 0.5;
         transition: .3s ease;
-      }
-
-      ${this.name()}:hover {
-        opacity: 1;
       }
 
     `;

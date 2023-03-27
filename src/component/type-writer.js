@@ -2,6 +2,7 @@ import piq from '/lib/piq/dist/piq.dist.js';
 import key from '/lib/util/key.js';
 import io from '/lib/util/io.js';
 import interval from '/lib/util/interval.js';
+import text from '/lib/util/text.js';
 
 class TypeWriter extends piq {
   name() {
@@ -75,6 +76,7 @@ class TypeWriter extends piq {
       query: 83,
       callback: () => {
         _this.save();
+
       }
     });
 

@@ -1,4 +1,5 @@
 import piq from '/lib/piq/dist/piq.dist.js';
+import InputStandard from '/component/partial/input-standard.js';
 
 class PanelStandard extends piq {
   name() {
@@ -12,19 +13,37 @@ class PanelStandard extends piq {
         background: #111;
         border-radius: 5px;
         padding: 5px;
-        opacity: .5;
         transition: .3s ease;
+        border: 1px solid #333;
       }
 
-      ${this.name()}:hover {
-        opacity: 1;
+      ${this.name()} > *:not(:last-of-type) {
+        margin-bottom: 1rem;
       }
     `;
   };
 
   template() {
     return `
-      panel standard
+
+      <input-standard
+        type="text"
+        name="title"
+      >
+      </input-standard>
+
+      <input-standard
+        type="date"
+        name="date"
+      >
+      </input-standard>
+
+      <input-standard
+        type="text"
+        name="tags"
+      >
+      </input-standard>
+
     `;
   }
 };
