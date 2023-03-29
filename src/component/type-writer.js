@@ -80,6 +80,11 @@ class TypeWriter extends piq {
       }
     });
 
+    paper.addEventListener('input', function () {
+      const w = this.innerText;
+      console.log(`word count: ${text.WordCount(w)}`);
+    }, false);
+
   };
 
   template() {

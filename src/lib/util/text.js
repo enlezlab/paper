@@ -1,5 +1,15 @@
 const WordCount = (s) => {
-//TODO: take string as input, return int as word count result
+  const w = s.replace(/\n/g, ' ' );
+  const t = w.trim();
+  const rawArray = t.split(' ');
+
+  const res = rawArray.filter((i) => {
+    return i !== '';
+  });
+
+  const wordCount = res.length;
+
+  return wordCount;
 };
 
 const ReadTime = (s) => {
