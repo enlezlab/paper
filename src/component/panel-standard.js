@@ -46,7 +46,7 @@ class PanelStandard extends piq {
       </input-standard>
       <select-standard
         name="category"
-        options="[
+        options='[
           {
             "name": "random 1",
             "value": "00"
@@ -59,7 +59,7 @@ class PanelStandard extends piq {
             "name": "random 3",
             "value": "02"
           }
-        ]"
+        ]'
       >
       </select-standard>
 
