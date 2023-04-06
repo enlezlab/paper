@@ -25,7 +25,7 @@ class PanelStatus extends piq {
     return `
       <label-status
         name="word count"
-        value="560"
+        value="0"
       >
       </label-status>
 

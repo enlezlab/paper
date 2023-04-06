@@ -1,6 +1,14 @@
 import piq from '/lib/piq/dist/piq.dist.js';
 
 class LabelStatus extends piq {
+
+  static attr = () => {
+    return [
+      'name',
+      'value'
+    ];
+  }
+
   name() {
     return 'label-status';
   };
