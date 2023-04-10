@@ -31,7 +31,7 @@ class PanelStatus extends piq {
 
       <label-status
         name="read time"
-        value="2m6s"
+        value="0"
       >
       </label-status>
     `;

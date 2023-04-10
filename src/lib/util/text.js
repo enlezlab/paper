@@ -12,8 +12,14 @@ const WordCount = (s) => {
   return wordCount;
 };
 
-const ReadTime = (s) => {
-//TODO: take string as input, return string as read time result
+const ReadTime = (wc) => {
+  const wcFloat =  parseFloat(wc);
+  const response = {
+    float: wcFloat / 200,
+    round: Math.round(wcFloat / 200)
+  };
+
+  return response;
 };
 
 export default {

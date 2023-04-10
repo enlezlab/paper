@@ -80,14 +80,16 @@ class TypeWriter extends piq {
       }
     });
 
-    // just a test, rerender word count need to happen via state management / proxy
+    // just a test, rerender word count and read time need to happen via state management / proxy
     const wcStatus = document.querySelectorAll('label-status[name="word count"]')[0];
+    const rtStatus = document.querySelectorAll('label-status[name="read time"]')[0];
 
     paper.addEventListener('input', function () {
       const w = this.innerText;
       console.log(`word count: ${text.WordCount(w)}`);
       console.log(wcStatus);
       wcStatus.setAttribute('value', text.WordCount(w));
+      rtStatus.setAttribute('value', text.ReadTime(text.WordCount(w)).round);
     }, false);
 
   };
