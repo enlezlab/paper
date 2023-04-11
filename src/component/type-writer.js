@@ -3,7 +3,6 @@ import key from '/lib/util/key.js';
 import io from '/lib/util/io.js';
 import interval from '/lib/util/interval.js';
 import text from '/lib/util/text.js';
-import state from '/lib/piq-state/piq-state.beta.js';
 
 class TypeWriter extends piq {
   name() {
@@ -93,7 +92,6 @@ class TypeWriter extends piq {
       rtStatus.setAttribute('value', text.ReadTime(text.WordCount(w)).round);
     }, false);
 
-    console.log(state);
 
   };
 
@@ -106,6 +104,9 @@ class TypeWriter extends piq {
     `;
   };
 
+  connected() {
+
+  }
 
 };
 

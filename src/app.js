@@ -65,6 +65,10 @@ class PiqApp extends piq {
     `;
   };
 
+  connected() {
+
+  };
+
 
 };
 

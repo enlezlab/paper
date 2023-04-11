@@ -6,6 +6,16 @@
 
   <title></title>
   <script src="/vendor/pouchdb/8.0.0/dist/pouchdb.min.js"></script>
+  <script src="/lib/piq-state/piq-state.beta.js"></script>
+
+  <script>
+    const state = new piqState;
+    state.set({
+      node: 'yo',
+      value: 'qwerty'
+    })
+  </script>
+
   <script type="module" src="/app.js"></script>
 </head>
 <body>
