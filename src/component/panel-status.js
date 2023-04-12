@@ -21,11 +21,20 @@ class PanelStatus extends piq {
     `;
   };
 
+  wc() {
+    const data = state.get('wc');
+    if (data === undefined) {
+      return 0;
+    }
+    return data;
+  };
+
   template() {
     return `
       <label-status
         name="word count"
-        value="0"
+        value="${this.wc()}"
+        piq-bind="wc"
       >
       </label-status>
 

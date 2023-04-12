@@ -87,15 +87,22 @@ class TypeWriter extends piq {
     paper.addEventListener('input', function () {
       const w = this.innerText;
       console.log(`word count: ${text.WordCount(w)}`);
-      console.log(wcStatus);
-      wcStatus.setAttribute('value', text.WordCount(w));
-      rtStatus.setAttribute('value', text.ReadTime(text.WordCount(w)).round);
+      // console.log(wcStatus);
+      // wcStatus.setAttribute('value', text.WordCount(w));
+      // rtStatus.setAttribute('value', text.ReadTime(text.WordCount(w)).round);
+
+    state.set({
+      node: 'wc',
+      value: text.WordCount(w)
+    })
+
     }, false);
 
 
   };
 
   template() {
+
     return `
       <div class="paper"
         contenteditable="true"
@@ -103,10 +110,6 @@ class TypeWriter extends piq {
       </div>
     `;
   };
-
-  connected() {
-
-  }
 
 };
 
