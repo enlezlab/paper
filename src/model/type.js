@@ -9,6 +9,8 @@ const Document = (props) => {
     tags: props.tags,
     title: props.title,
     content: props.content,
+    wordCount: props.wordCount,
+    readTime: props.readTime,
   }
 };
 

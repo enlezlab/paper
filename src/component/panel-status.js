@@ -29,18 +29,34 @@ class PanelStatus extends piq {
     return data;
   };
 
+  rt() {
+    const data = state.get('rt');
+    if (data === undefined) {
+      return 0;
+    }
+    return data;
+  };
+
   template() {
+    /* NOTE:
+      * `piq-bind-wc="value"` is to bind value attribute to
+      * state machine that has the key `wc`
+      * when state machine update, it will trigger component re render
+      * via attrbuteChangedCallback
+      * */
+    console.log(this.rt());
     return `
       <label-status
         name="word count"
         value="${this.wc()}"
-        piq-bind="wc"
+        piq-bind-wc="value"
       >
       </label-status>
 
       <label-status
         name="read time"
-        value="0"
+        value="${this.rt()}"
+        piq-bind-rt="value"
       >
       </label-status>
     `;

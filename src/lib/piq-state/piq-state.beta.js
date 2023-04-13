@@ -27,17 +27,12 @@ class piqState {
   }
 
   render(obj) {
+    const listNode = document.querySelectorAll(`[piq-bind-${obj.node}`);
 
-    //TODO: need to work out how to do the render
-    console.log(obj)
-    console.log('trigger render')
-    const listNode = document.querySelectorAll(`[piq-bind=${obj.node}]`);
-
-    console.log(obj.node);
-    console.log(listNode);
-
-
-
+    listNode.forEach((i) => {
+      const attr = i.getAttribute(`piq-bind-${obj.node}`);
+      i.setAttribute(attr, obj.value)
+    });
   };
 
 };

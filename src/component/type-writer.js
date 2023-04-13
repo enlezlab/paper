@@ -48,6 +48,8 @@ class TypeWriter extends piq {
       tags: 'writing, publishing, open web',
       title: 'untitled',
       content: this.innerText,
+      wordCount: state.get('wc'),
+      readTime: state.get('rt')
     });
 
     console.log(await s);
@@ -80,21 +82,18 @@ class TypeWriter extends piq {
       }
     });
 
-    // just a test, rerender word count and read time need to happen via state management / proxy
-    const wcStatus = document.querySelectorAll('label-status[name="word count"]')[0];
-    const rtStatus = document.querySelectorAll('label-status[name="read time"]')[0];
-
     paper.addEventListener('input', function () {
       const w = this.innerText;
-      console.log(`word count: ${text.WordCount(w)}`);
-      // console.log(wcStatus);
-      // wcStatus.setAttribute('value', text.WordCount(w));
-      // rtStatus.setAttribute('value', text.ReadTime(text.WordCount(w)).round);
 
-    state.set({
-      node: 'wc',
-      value: text.WordCount(w)
-    })
+      state.set({
+        node: 'wc',
+        value: text.WordCount(w)
+      })
+
+      state.set({
+        node: 'rt',
+        value: text.ReadTime(text.WordCount(w)).round
+      })
 
     }, false);
 
