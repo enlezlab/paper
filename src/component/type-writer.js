@@ -3,6 +3,7 @@ import key from '/lib/util/key.js';
 import io from '/lib/util/io.js';
 import interval from '/lib/util/interval.js';
 import text from '/lib/util/text.js';
+import uuid from '/lib/util/uuid.js';
 
 class TypeWriter extends piq {
   name() {
@@ -40,7 +41,7 @@ class TypeWriter extends piq {
 
   async save() {
     const s = io.Save('document', {
-      uuid: '123',
+      uuid: uuid(),
       slug: 'qwerty-asdfgh',
       date: '2023-03-24',
       categoryID: '00',
@@ -55,7 +56,30 @@ class TypeWriter extends piq {
     console.log(await s);
   };
 
+  template() {
+    return `
+      <div class="paper"
+        contenteditable="true"
+        spellcheck="false">
+      </div>
+    `;
+  };
+
   async connected() {
+
+    console.log(`
+    Document init logic:
+    if uuid exist:
+      - [ ] get url segment that map to uuid
+      - [ ] get docuemnt based on uuid from data store(db or some cloud store)
+      - [ ] take the uuid document response to hydrate the document state
+      - [ ] take state propagate the render sequence
+    if uuid not exsit (new document)
+      - [ ] assign uuid on save (when io.Save() function trigger)
+      - [ ] save function then send the data payload to data store(db or some cloud store)
+    `);
+
+
     const paper = this.querySelectorAll('.paper')[0];
     const _this = this;
 
@@ -100,15 +124,6 @@ class TypeWriter extends piq {
 
   };
 
-  template() {
-
-    return `
-      <div class="paper"
-        contenteditable="true"
-        spellcheck="false">
-      </div>
-    `;
-  };
 
 };
 
