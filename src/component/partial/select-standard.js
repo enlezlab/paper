@@ -81,6 +81,21 @@ class SelectStandard extends piq {
       </label>
     `;
   }
+
+  connected() {
+    const input = this.querySelectorAll('select')[0];
+    const _this = this;
+    input.addEventListener('input', function () {
+      _this.setAttribute('value', this.value);
+      state.set({
+        node: _this.props('name'),
+        value: this.value
+      });
+
+      console.log(state);
+
+    }, false);
+  };
 };
 
 customElements.define('select-standard', SelectStandard);

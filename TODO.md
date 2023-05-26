@@ -1,6 +1,6 @@
 - [ ] all input-standard in the panel-standard need to organize into widget by type of output(e.g. title, date, tags group into one widget)
-- [ ] type-writer: method to output word count for status label
-- [ ] type-writer: method to output read time estimate for status label
+- [x] type-writer: method to output word count for status label
+- [x] type-writer: method to output read time estimate for status label
 - [ ] new docuemnt (slug + view)
 - [wip] data schema
 - [x] basic panels

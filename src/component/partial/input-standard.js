@@ -62,7 +62,20 @@ class InputStandard extends piq {
         ${this.props('name')}
       </label>
     `;
-  }
+  };
+
+  connected() {
+    const input = this.querySelectorAll('input')[0];
+    const _this = this;
+    input.addEventListener('input', function () {
+      _this.setAttribute('value', this.value);
+      state.set({
+        node: _this.props('name'),
+        value: this.value
+      });
+
+    }, false);
+  };
 };
 
 customElements.define('input-standard', InputStandard);

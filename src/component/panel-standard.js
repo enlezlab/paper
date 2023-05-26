@@ -25,6 +25,7 @@ class PanelStandard extends piq {
   };
 
   template() {
+
     return `
 
       <input-standard
@@ -64,7 +65,8 @@ class PanelStandard extends piq {
       </select-standard>
 
     `;
-  }
+  };
+
 };
 
 customElements.define('panel-standard', PanelStandard);

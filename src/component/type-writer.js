@@ -42,12 +42,11 @@ class TypeWriter extends piq {
   async save() {
     const s = io.Save('document', {
       uuid: uuid(),
-      slug: 'qwerty-asdfgh',
-      date: '2023-03-24',
-      categoryID: '00',
-      authorID: '00',
-      tags: 'writing, publishing, open web',
-      title: 'untitled',
+      slug: state.get('title'), // TODO: need a slugify ,method
+      date: state.get('date'),
+      categoryID: state.get('category'),
+      tags: state.get('tags'),
+      title: state.get('title'),
       content: this.innerText,
       wordCount: state.get('wc'),
       readTime: state.get('rt')
