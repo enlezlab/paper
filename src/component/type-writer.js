@@ -39,9 +39,14 @@ class TypeWriter extends piq {
     `;
   };
 
-  async save() {
-    const s = io.Save('document', {
-      uuid: uuid(),
+  uuid() {
+    const res = uuid();
+    return res;
+  };
+
+  content() {
+    return {
+      uuid: this.uuid(),
       slug: state.get('title'), // TODO: need a slugify ,method
       date: state.get('date'),
       categoryID: state.get('category'),
@@ -50,9 +55,20 @@ class TypeWriter extends piq {
       content: this.innerText,
       wordCount: state.get('wc'),
       readTime: state.get('rt')
-    });
+    };
+  };
 
-    console.log(await s);
+  async save() {
+    const s = io.Save('document', this.content());
+    console.log(await s); // wait for documnent save response
+  };
+
+
+  saveToFile() {
+    io.SaveToFile('json', {
+      fileName: 'need file name',
+      content: JSON.stringify(this.content())
+    });
   };
 
   template() {
@@ -101,7 +117,6 @@ class TypeWriter extends piq {
       query: 83,
       callback: () => {
         _this.save();
-
       }
     });
 
