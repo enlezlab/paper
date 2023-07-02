@@ -14,6 +14,7 @@ class PanelStatus extends piq {
         align-items: center;
         background: #111;
         border-radius: 5px;
+        border: 1px solid #333;
         padding: 5px 2.5px;
         transition: .3s ease;
       }

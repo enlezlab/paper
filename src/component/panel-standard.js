@@ -1,6 +1,7 @@
 import piq from '/lib/piq/dist/piq.dist.js';
 import InputStandard from '/component/partial/input-standard.js';
 import SelectStandard from '/component/partial/select-standard.js';
+import IconChevron from '/component/icon/icon-chevron.js';
 
 class PanelStandard extends piq {
   name() {
@@ -16,35 +17,77 @@ class PanelStandard extends piq {
         padding: 5px;
         transition: .3s ease;
         border: 1px solid #333;
+        font-family: arial;
+        box-sizing: border-box;
       }
 
       ${this.name()} > *:not(:last-child) {
         margin-bottom: 1rem;
       }
+
+      .head {
+        font-weight: bold;
+        font-size: 12px;
+        color: #999;
+        text-transform: uppercase;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 30px;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .head icon-chevron {
+        cursor: pointer;
+        height: 18px;
+      }
+
     `;
   };
 
-  template() {
-
+  head() {
     return `
+      <div class="head">
+        <span>
+          Document Info
+        </span>
+        <icon-chevron></icon-chevron>
+      </div>
+    `;
+  };
 
+  titleInput() {
+    return `
       <input-standard
         type="text"
         name="title"
       >
       </input-standard>
+    `;
+  };
 
+  dateInput() {
+    return `
       <input-standard
         type="date"
         name="date"
       >
       </input-standard>
+    `;
+  };
 
+  tagsInput() {
+    return `
       <input-standard
         type="text"
         name="tags"
       >
       </input-standard>
+    `;
+  };
+
+  categorySelect() {
+    return `
       <select-standard
         name="category"
         options='[
@@ -63,7 +106,16 @@ class PanelStandard extends piq {
         ]'
       >
       </select-standard>
+    `;
+  };
 
+  template() {
+
+    return `
+      ${this.head()}
+      ${this.titleInput()}
+      ${this.dateInput()}
+      ${this.tagsInput()}
     `;
   };
 

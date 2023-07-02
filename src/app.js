@@ -37,11 +37,15 @@ class PiqApp extends piq {
       ${this.name()} panel-standard {
         grid-column: 1 / 2;
         grid-row: 1 / 3;
+
+        align-self: end;
       }
 
       ${this.name()} panel-widget {
         grid-column: 3 / 4;
         grid-row: 1 / 3;
+
+        align-self: end;
       }
 
       ${this.name()} panel-status {
