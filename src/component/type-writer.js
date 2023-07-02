@@ -59,12 +59,14 @@ class TypeWriter extends piq {
   };
 
   async save() {
+    /* save method is used for saving document to database or cloud store */
     const s = io.Save('document', this.content());
     console.log(await s); // wait for documnent save response
   };
 
 
   saveToFile() {
+    /* saveToFile method is used to save document to local file */
     io.SaveToFile('json', {
       fileName: 'need file name',
       content: JSON.stringify(this.content())

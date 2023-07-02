@@ -1,3 +1,12 @@
+/*
+ * @function
+ * @name WordCount
+ * @param {string} s String value of the text input
+ * @return {object}
+ * @description
+ * Take text input and return an object contains value of calculated
+ * word count in both float and integer.
+ * */
 const WordCount = (s) => {
   const w = s.replace(/\n/g, ' ' );
   const t = w.trim();

@@ -1,7 +1,7 @@
 
 /*
- * @param s {string}
- * @returns {string}
+ * @param s {string} String value of the YouTube URL
+ * @returns {string} Return string value of the YouTube ID
  * */
 const ytID = (s) => {
   const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
