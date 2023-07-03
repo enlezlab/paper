@@ -31,23 +31,30 @@ class TypeWriter extends piq {
         word-wrap: break-word;
         max-width: 768px;
         margin: 0 auto;
-        padding: 30px 20px;
+        padding: 2rem 1rem;
       }
 
       ${this.name()} .paper:focus {
         outline: none;
       }
 
-      .placeholder {
+      .overlay {
         position: absolute;
-        top: 30px;
-        left: 20px;
+        pointer-events: none;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
         opacity: 0;
+        padding: 2rem 1rem;
+        width: 100%;
+        height: 100%;
+        max-width: 768px;
         font-size: 1.2rem;
         transition: .3s ease;
+        box-sizing: border-box;
       }
 
-      .placeholder.placeholder--active {
+      .overlay.overlay--active {
         opacity: .2;
       }
 
@@ -94,7 +101,7 @@ class TypeWriter extends piq {
         contenteditable="true"
         spellcheck="false">
       </div>
-      <div class="placeholder placeholder--active">Write something...</div>
+      <div class="overlay overlay--active">Write something...</div>
     `;
   };
 
@@ -151,12 +158,12 @@ class TypeWriter extends piq {
         value: text.ReadTime(text.WordCount(w)).round
       })
 
-      //toggle placeholder text based on if writing area is empty or not
-      const placeholder = this.parentElement.querySelectorAll('.placeholder')[0];
+      //toggle overlay text based on if writing area is empty or not
+      const overlay = this.parentElement.querySelectorAll('.overlay')[0];
       if (this.textContent !== '') {
-        placeholder.classList.remove('placeholder--active');
+        overlay.classList.remove('overlay--active');
       } else {
-        placeholder.classList.add('placeholder--active');
+        overlay.classList.add('overlay--active');
       }
 
     }, false);
