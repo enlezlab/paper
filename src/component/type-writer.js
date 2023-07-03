@@ -19,6 +19,7 @@ class TypeWriter extends piq {
         box-sizing: border-box;
         overflow-x: hidden;
         overflow-y: auto;
+        position: relative;
       }
 
       ${this.name()} .paper {
@@ -30,12 +31,26 @@ class TypeWriter extends piq {
         word-wrap: break-word;
         max-width: 768px;
         margin: 0 auto;
-        padding: 2rem 1rem;
+        padding: 30px 20px;
       }
 
       ${this.name()} .paper:focus {
         outline: none;
       }
+
+      .placeholder {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        opacity: 0;
+        font-size: 1.2rem;
+        transition: .3s ease;
+      }
+
+      .placeholder.placeholder--active {
+        opacity: .2;
+      }
+
     `;
   };
 
@@ -79,6 +94,7 @@ class TypeWriter extends piq {
         contenteditable="true"
         spellcheck="false">
       </div>
+      <div class="placeholder placeholder--active">Write something...</div>
     `;
   };
 
@@ -134,6 +150,14 @@ class TypeWriter extends piq {
         node: 'rt',
         value: text.ReadTime(text.WordCount(w)).round
       })
+
+      //toggle placeholder text based on if writing area is empty or not
+      const placeholder = this.parentElement.querySelectorAll('.placeholder')[0];
+      if (this.textContent !== '') {
+        placeholder.classList.remove('placeholder--active');
+      } else {
+        placeholder.classList.add('placeholder--active');
+      }
 
     }, false);
 
