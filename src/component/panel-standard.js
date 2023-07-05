@@ -21,10 +21,6 @@ class PanelStandard extends piq {
         box-sizing: border-box;
       }
 
-      ${this.name()} > *:not(:last-child) {
-        margin-bottom: 1rem;
-      }
-
       .head {
         font-weight: bold;
         font-size: 12px;
@@ -35,6 +31,12 @@ class PanelStandard extends piq {
         grid-template-columns: 1fr 30px;
         align-items: center;
         box-sizing: border-box;
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+
+      .head--active {
+        margin-bottom: 1rem;
       }
 
       .head icon-chevron {
@@ -42,6 +44,21 @@ class PanelStandard extends piq {
         height: 18px;
       }
 
+      .head.head--active icon-chevron {
+        transform: rotate(180deg);
+      }
+
+      .metadata {
+        display: none;
+      }
+
+      .metadata--active {
+        display: block;
+      }
+
+      .metadata > *:not(:last-child) {
+        margin-bottom: 1rem;
+      }
     `;
   };
 
@@ -109,14 +126,30 @@ class PanelStandard extends piq {
     `;
   };
 
+  toggle() {
+    const head = this.querySelectorAll('.head')[0];
+    const metadata = this.querySelectorAll('.metadata')[0];
+    head.addEventListener('click', function () {
+      this.classList.toggle('head--active');
+      metadata.classList.toggle('metadata--active');
+    }, false);
+
+  };
+
   template() {
 
     return `
       ${this.head()}
-      ${this.titleInput()}
-      ${this.dateInput()}
-      ${this.tagsInput()}
+      <div class="metadata">
+        ${this.titleInput()}
+        ${this.dateInput()}
+        ${this.tagsInput()}
+      </div>
     `;
+  };
+
+  connected() {
+    this.toggle();
   };
 
 };
