@@ -38,6 +38,11 @@ class TypeWriter extends piq {
         outline: none;
       }
 
+      ::selection {
+        background: orange;
+        color: #000;
+      }
+
       .overlay {
         position: absolute;
         pointer-events: none;
@@ -147,6 +152,11 @@ class TypeWriter extends piq {
 
     paper.addEventListener('input', function () {
       const w = this.innerText;
+
+      state.set({
+        node: 'content',
+        value: w
+      });
 
       state.set({
         node: 'wc',

@@ -1,7 +1,9 @@
 import piq from '/lib/piq/dist/piq.dist.js';
 import InputStandard from '/component/partial/input-standard.js';
 import SelectStandard from '/component/partial/select-standard.js';
+import ButtonStandard from '/component/partial/button-standard.js';
 import IconChevron from '/component/icon/icon-chevron.js';
+import io from '/lib/util/io.js';
 
 class PanelStandard extends piq {
   name() {
@@ -59,6 +61,13 @@ class PanelStandard extends piq {
       .metadata > *:not(:last-child) {
         margin-bottom: 1rem;
       }
+
+      .action {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     `;
   };
 
@@ -103,6 +112,26 @@ class PanelStandard extends piq {
     `;
   };
 
+  saveToFileButton() {
+    return `
+      <button-standard
+        type="save"
+        name="save to file"
+      >
+      </button-standard>
+    `;
+  };
+
+  openFileButton() {
+    return `
+      <button-standard
+        type="open"
+        name="open file"
+      >
+      </button-standard>
+    `;
+  };
+
   categorySelect() {
     return `
       <select-standard
@@ -136,6 +165,17 @@ class PanelStandard extends piq {
 
   };
 
+  saveToFile() {
+    const btn = this.querySelectorAll('button-standard[type="save"]')[0];
+    btn.addEventListener('click', function () {
+      console.log('saving to file...');
+      io.SaveToFile('md', {
+        fileName: 'need-file-name',
+        content: state.get('content')
+      });
+    }, false);
+  };
+
   template() {
 
     return `
@@ -144,12 +184,19 @@ class PanelStandard extends piq {
         ${this.titleInput()}
         ${this.dateInput()}
         ${this.tagsInput()}
+
+        <div class="action">
+          ${this.openFileButton()}
+          ${this.saveToFileButton()}
+        </div>
       </div>
+
     `;
   };
 
   connected() {
     this.toggle();
+    this.saveToFile();
   };
 
 };
