@@ -22,6 +22,24 @@ class TypeWriter extends piq {
         position: relative;
       }
 
+      ${this.name()}::-webkit-scrollbar {
+        width: 15px;
+      }
+
+      ${this.name()}::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ${this.name()}::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #111;
+        border: 1px solid #333;
+      }
+
+      ${this.name()}::-webkit-scrollbar-thumb:hover {
+        background: #111;
+      }
+
       ${this.name()} .paper {
         width: 100%;
         height: 100%;
