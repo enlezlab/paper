@@ -56,6 +56,10 @@ class TypeWriter extends piq {
         outline: none;
       }
 
+      ${this.name()} .paper > div:last-child {
+        padding-bottom: 25vh;
+      }
+
       ::selection {
         background: orange;
         color: #000;
