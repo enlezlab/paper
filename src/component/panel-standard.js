@@ -170,7 +170,7 @@ class PanelStandard extends piq {
     btn.addEventListener('click', function () {
       console.log('saving to file...');
       io.SaveToFile('md', {
-        fileName: 'need-file-name',
+        fileName: state.get('title'),
         content: state.get('content')
       });
     }, false);

@@ -23,7 +23,7 @@ class TypeWriter extends piq {
       }
 
       ${this.name()}::-webkit-scrollbar {
-        width: 15px;
+        width: 8px;
       }
 
       ${this.name()}::-webkit-scrollbar-track {
@@ -117,7 +117,7 @@ class TypeWriter extends piq {
   saveToFile() {
     /* saveToFile method is used to save document to local file */
     io.SaveToFile('json', {
-      fileName: 'need file name',
+      fileName: state.get('title'),
       content: JSON.stringify(this.content())
     });
   };
